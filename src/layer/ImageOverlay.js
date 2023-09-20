@@ -214,6 +214,7 @@ export var ImageOverlay = Layer.extend({
 	},
 
 	_animateZoom: function (e) {
+		if (!this._map) { return; }
 		var scale = this._map.getZoomScale(e.zoom),
 		    offset = this._map._latLngBoundsToNewLayerBounds(this._bounds, e.zoom, e.center).min;
 
