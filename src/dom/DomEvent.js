@@ -252,7 +252,17 @@ export function getMousePosition(e, container) {
 		return new Point(e.clientX, e.clientY);
 	}
 
-	var scale = getScale(container),
+	if (!e.clientX) {
+		if (e.touches && e.touches.length > 0) {
+			e.clientX = e.touches.item(0).clientX;
+			e.clientY = e.touches.item(0).clientY;
+		} else {
+			e.clientX = 0;
+			e.clientY = 0;
+		}
+	}
+
+	const scale = getScale(container),
 	    offset = scale.boundingClientRect; // left and top  values are in page scale (like the event clientX/Y)
 
 	return new Point(
