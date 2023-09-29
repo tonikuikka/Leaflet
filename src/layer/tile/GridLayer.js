@@ -531,6 +531,7 @@ export var GridLayer = Layer.extend({
 	},
 
 	_animateZoom: function (e) {
+		if (!this._map) { return; }
 		this._setView(e.center, e.zoom, true, e.noUpdate);
 	},
 
